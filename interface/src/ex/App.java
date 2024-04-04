@@ -12,6 +12,10 @@ import java.util.function.Consumer;
 
 public class App {
     public static void main(String[] args) {
+
+
+
+
         TeacherMusician tm = new TeacherMusician("anna", "rossi", 20);
 
         Musician musician = tm;
@@ -58,7 +62,22 @@ public class App {
         System.out.println("------------------foreach method reference");
         parole.forEach(App::wordConsumer);
 
+        play(new Musician() {
+            public void playInstrument() {}{
+                System.out.println("play sax");
+            }
+
+            public void readMusicSheet() {
+                System.out.println("...");
+            }
+        });
     }
+
+
+    private static void play(Musician m){
+        m.playInstrument();
+    }
+
 
     private static void wordConsumer(String w) {
         System.out.println(w);

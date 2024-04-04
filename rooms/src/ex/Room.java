@@ -8,10 +8,10 @@ public class Room {
 
     private List<Reservation> reservations = new ArrayList<>();
 
-    public Reservation reserve(String name, LocalDate from, LocalDate to) {
+    public Reservation reserve(String name, LocalDate from, LocalDate to) throws ReservationNoAvailableException {
         Reservation r = new Reservation(name, from, to);
         if (isReserved(from, to)) {
-            throw new RuntimeException("room is reserved..");
+            throw new ReservationNoAvailableException("room is reserved..");
         }
         reservations.add(r);
         return r;
